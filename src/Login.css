@@ -1,0 +1,58 @@
+.SignIn {
+	margin: 0 auto;
+	width: 50%;
+	max-width: 400px;
+	background-color: white;
+	font-size: 1rem;
+}
+
+.SignIn div {
+	text-align: right;
+	margin: 0 20% 2rem 0;
+}
+
+.SignIn button {
+	margin: 0 auto 2rem;
+	font-size: 1.2rem;
+	width: 20%;
+	background-color: rgb(230, 230, 230);
+}
+
+.error {
+	font-size: 1.3rem;
+	border-radius: 10px;
+	background-color: rgb(255, 118, 118);
+	margin: 0 auto 2rem;
+	width: 50%;
+	text-align: center;
+}
+
+button {
+	font-size: 1.5rem;
+	margin: 0 auto;
+	width: 50%;
+}
+
+.buttons {
+	margin: 10px auto 0px;
+	width: 50%;
+	max-width: 400px;
+	font-size: 1.8rem;
+}
+
+.buttons button {
+	width: 50%;
+}
+
+.signUpButton,
+.loginButton {
+	background-color: rgb(230, 230, 230);
+}
+
+.active {
+	background-color: white;
+}
+
+input {
+	margin-left: 0.5rem;
+}
