@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { gotAllBlogs, loginUser, logoutUser, signUpUser, saveBlog, gotBlogDetails, savePost, upVote, downVote, savePostTitle, gotPostDetails, editPost, deletePost, addComment, deleteComment } from './actions';
 
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "https://key-blogger-backend.herokuapp.com/";
 
 function getAllBlogs(searchOrFilter) {
     if (searchOrFilter) {
