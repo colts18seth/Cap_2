@@ -114,18 +114,4 @@ function deletePostCreator(id) {
     }
 }
 
-function addCommentCreator(postId, text) {
-    return async function (dispatch) {
-        let res = await axios.post(`${BASE_URL}/api/posts/${postId}/comments`, text)
-        dispatch(addComment(postId, res.data))
-    }
-}
-
-function deleteCommentCreator(cID, pID) {
-    return async function (dispatch) {
-        await axios.delete(`${BASE_URL}/api/posts/${pID}/comments/${cID}`);
-        dispatch(deleteComment(cID, pID))
-    }
-}
-
-export { getAllBlogs, login, logout, signUp, saveBlogCreator, getBlogDetails, savePostCreator, upVoteCreator, downVoteCreator, savePostTitleCreator, getPostDetails, editPostCreator, deletePostCreator, addCommentCreator, deleteCommentCreator };
+export { getAllBlogs, login, logout, signUp, saveBlogCreator, getBlogDetails, savePostCreator, upVoteCreator, downVoteCreator, savePostTitleCreator, getPostDetails, editPostCreator, deletePostCreator };

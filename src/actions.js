@@ -15,8 +15,6 @@ import {
 
     EDIT_POST,
     DELETE_POST,
-    ADD_COMMENT,
-    DELETE_COMMENT,
 } from './actionTypes';
 
 function gotAllBlogs(blogs) {
@@ -118,19 +116,4 @@ function editPost(post) {
     });
 }
 
-function addComment(postId, text) {
-    return ({
-        type: ADD_COMMENT,
-        postId,
-        payload: text
-    });
-}
-
-function deleteComment(cID, pID) {
-    return ({
-        type: DELETE_COMMENT,
-        payload: { cID, pID }
-    })
-}
-
-export { gotAllBlogs, loginUser, logoutUser, signUpUser, saveBlog, gotBlogDetails, savePost, upVote, downVote, savePostTitle, gotPostDetails, deletePost, editPost, addComment, deleteComment };
+export { gotAllBlogs, loginUser, logoutUser, signUpUser, saveBlog, gotBlogDetails, savePost, upVote, downVote, savePostTitle, gotPostDetails, deletePost, editPost };

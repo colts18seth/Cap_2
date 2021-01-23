@@ -11,9 +11,7 @@ import {
     GET_POST_DETAILS,
 
     EDIT_POST,
-    DELETE_POST,
-    ADD_COMMENT,
-    DELETE_COMMENT
+    DELETE_POST
 } from './actionTypes';
 
 const INITIAL_STATE = {
@@ -126,17 +124,6 @@ function rootReducer(state = INITIAL_STATE, action) {
             const newObj = state.posts;
             delete newObj[action.payload]
             return { ...state, posts: { ...newObj } }
-
-        case ADD_COMMENT:
-            return {
-                ...state, postDetails: { ...state.postDetails, comments: [...state.postDetails.comments, action.payload] }
-            }
-
-        case DELETE_COMMENT:
-            const cID = action.payload.cID;
-            return {
-                ...state, postDetails: { ...state.postDetails, comments: state.postDetails.comments.filter(c => c.id !== cID) }
-            }
 
         default:
             return { ...state }
