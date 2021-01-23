@@ -56,7 +56,7 @@ function Blog({ currentUsername, upVote, downVote }) {
                                     <small>Posted on: {p.time}</small>
                                 </div>
                             )) :
-                            "Loading"
+                            "No Posts Yet"
                         }
                     </div>
                 </div > :
