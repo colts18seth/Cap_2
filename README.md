@@ -4,4 +4,6 @@
 
 This is the frontend code for the Key_Blogger app.
 
-Key_Blogger is a blogging app.  It's was made to make it simple and easy to start your own blog.
+Key_Blogger is a blogging app.  It was built to make it simple and easy to start your own blog.
+
+It was built using React and deployed using Netlify.
