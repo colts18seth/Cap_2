@@ -34,7 +34,6 @@ function NewPostForm({ blogTitle }) {
         data.title = title;
         await dispatch(savePostCreator(data));
         setData(INITIAL_STATE);
-        history.push(`/blog/${blogTitle}`);
     }
 
     return (
@@ -49,7 +48,10 @@ function NewPostForm({ blogTitle }) {
                 />
 
             </div>
-            <button className="btn btn-success mt-3" onClick={() => handleSubmit()}>Save</button>
+            <button className="btn btn-success mt-3" onClick={async () => {
+                await handleSubmit();
+                history.push(`/blog/${blogTitle}`);
+            }}>Save</button>
         </>
     );
 }
