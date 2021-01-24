@@ -49,7 +49,7 @@ function NewPostForm({ blogTitle }) {
                 />
 
             </div>
-            <button className="btn btn-success" onClick={() => handleSubmit()}>Save</button>
+            <button className="btn btn-success mt-3" onClick={() => handleSubmit()}>Save</button>
         </>
     );
 }

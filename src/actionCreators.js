@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { gotAllBlogs, loginUser, logoutUser, signUpUser, saveBlog, gotBlogDetails, savePost, upVote, downVote, savePostTitle, gotPostDetails, editPost, deletePost } from './actions';
+import { gotAllBlogs, loginUser, logoutUser, signUpUser, saveBlog, gotBlogDetails, savePost, upVote, downVote, savePostTitle, gotPostDetails } from './actions';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
@@ -92,26 +92,16 @@ function getPostDetails(title) {
     }
 }
 
-
-
-
-
-
-
-
-
-function editPostCreator(id, data) {
-    return async function (dispatch) {
-        let res = await axios.put(`${BASE_URL}/api/posts/${id}`, data);
-        dispatch(editPost(res.data))
+function editPost(title, data) {
+    return async function () {
+        await axios.patch(`${BASE_URL}/posts/${title}`, data);
     };
 }
 
-function deletePostCreator(id) {
-    return async function (dispatch) {
-        await axios.delete(`${BASE_URL}/api/posts/${id}`)
-        dispatch(deletePost(id))
+function deletePost(title, token) {
+    return async function () {
+        await axios.delete(`${BASE_URL}/posts/${title}`, { data: { _token: token } })
     }
 }
 
-export { getAllBlogs, login, logout, signUp, saveBlogCreator, getBlogDetails, savePostCreator, upVoteCreator, downVoteCreator, savePostTitleCreator, getPostDetails, editPostCreator, deletePostCreator };
+export { getAllBlogs, login, logout, signUp, saveBlogCreator, getBlogDetails, savePostCreator, upVoteCreator, downVoteCreator, savePostTitleCreator, getPostDetails, editPost, deletePost };

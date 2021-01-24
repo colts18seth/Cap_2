@@ -8,10 +8,7 @@ import {
     DOWN_VOTE,
     SAVE_POST_TITLE,
     SAVE_POST,
-    GET_POST_DETAILS,
-
-    EDIT_POST,
-    DELETE_POST
+    GET_POST_DETAILS
 } from './actionTypes';
 
 const INITIAL_STATE = {
@@ -109,21 +106,6 @@ function rootReducer(state = INITIAL_STATE, action) {
 
         case GET_POST_DETAILS:
             return { ...state, post: action.payload }
-
-
-
-
-
-
-
-
-        case EDIT_POST:
-            return { ...state, posts: { ...state.posts, [action.payload.id]: action.payload } }
-
-        case DELETE_POST:
-            const newObj = state.posts;
-            delete newObj[action.payload]
-            return { ...state, posts: { ...newObj } }
 
         default:
             return { ...state }

@@ -9,12 +9,7 @@ import {
     UP_VOTE,
     DOWN_VOTE,
     SAVE_POST_TITLE,
-    GET_POST_DETAILS,
-
-
-
-    EDIT_POST,
-    DELETE_POST,
+    GET_POST_DETAILS
 } from './actionTypes';
 
 function gotAllBlogs(blogs) {
@@ -93,27 +88,4 @@ function gotPostDetails(data) {
     });
 }
 
-
-
-
-
-
-
-
-
-
-function deletePost(id) {
-    return ({
-        type: DELETE_POST,
-        payload: id
-    });
-}
-
-function editPost(post) {
-    return ({
-        type: EDIT_POST,
-        payload: post
-    });
-}
-
-export { gotAllBlogs, loginUser, logoutUser, signUpUser, saveBlog, gotBlogDetails, savePost, upVote, downVote, savePostTitle, gotPostDetails, deletePost, editPost };
+export { gotAllBlogs, loginUser, logoutUser, signUpUser, saveBlog, gotBlogDetails, savePost, upVote, downVote, savePostTitle, gotPostDetails };

@@ -23,7 +23,7 @@ function NewPostTitle() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await dispatch(savePostTitleCreator(data.title));
+        dispatch(savePostTitleCreator(data.title));
         history.push(`/newPost`);
         setData(INITIAL_STATE);
     }

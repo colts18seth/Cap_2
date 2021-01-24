@@ -7,6 +7,7 @@ import Post from './Post';
 import NewBlogForm from './NewBlogForm';
 import NewPostForm from './NewPostForm';
 import NewPostTitle from './NewPostTitle';
+import EditPost from './EditPost';
 import { upVoteCreator, downVoteCreator } from './actionCreators';
 
 function Routes() {
@@ -20,6 +21,11 @@ function Routes() {
     const blogTitle = useSelector(s => {
         if (s.blogDetails.blog) {
             return s.blogDetails.blog.title
+        }
+    });
+    const author = useSelector(s => {
+        if (s.blogDetails.blog) {
+            return s.blogDetails.blog.username
         }
     });
 
@@ -54,6 +60,13 @@ function Routes() {
 
                 <Route exact path='/postTitle'>
                     <NewPostTitle />
+                </Route>
+
+                <Route exact path='/post/:title/edit'>
+                    {author === currentUsername ?
+                        <EditPost /> :
+                        <Redirect to='/' />
+                    }
                 </Route>
 
                 <Route exact path='/post/:title'>
