@@ -8,18 +8,18 @@ function getAllBlogs(searchOrFilter) {
         if (searchOrFilter.search) {
             return async function (dispatch) {
                 let res = await axios.get(`${BASE_URL}/blogs`, { params: { search: searchOrFilter.search } });
-                dispatch(gotAllBlogs(res.data));
+                await dispatch(gotAllBlogs(res.data));
             };
         } else if (searchOrFilter.filter) {
             return async function (dispatch) {
                 let res = await axios.get(`${BASE_URL}/blogs`, { params: { filter: searchOrFilter.filter } });
-                dispatch(gotAllBlogs(res.data));
+                await dispatch(gotAllBlogs(res.data));
             };
         }
     } else {
         return async function (dispatch) {
             let res = await axios.get(`${BASE_URL}/blogs`);
-            dispatch(gotAllBlogs(res.data));
+            await dispatch(gotAllBlogs(res.data));
         };
     }
 }
@@ -27,68 +27,68 @@ function getAllBlogs(searchOrFilter) {
 function login(data) {
     return async function (dispatch) {
         let res = await axios.post(`${BASE_URL}/login`, data)
-        dispatch(loginUser(res.data))
+        await dispatch(loginUser(res.data))
     }
 }
 
 function logout() {
     return async function (dispatch) {
-        dispatch(logoutUser())
+        await dispatch(logoutUser())
     }
 }
 
 function signUp(data) {
     return async function (dispatch) {
         let res = await axios.post(`${BASE_URL}/users`, data)
-        dispatch(signUpUser(res.data))
+        await dispatch(signUpUser(res.data))
     }
 }
 
 function saveBlogCreator(data) {
     return async function (dispatch) {
         let res = await axios.post(`${BASE_URL}/blogs`, data);
-        dispatch(saveBlog(res.data));
+        await dispatch(saveBlog(res.data));
     }
 }
 
 function getBlogDetails(title) {
     return async function (dispatch) {
         let res = await axios.get(`${BASE_URL}/blogs/${title}`);
-        dispatch(gotBlogDetails(res.data));
+        await dispatch(gotBlogDetails(res.data));
     }
 }
 
 function savePostCreator(data) {
     return async function (dispatch) {
         let res = await axios.post(`${BASE_URL}/posts`, data);
-        dispatch(savePost(res.data));
+        await dispatch(savePost(res.data));
     }
 }
 
 function upVoteCreator(id, route) {
     return async function (dispatch) {
         await axios.post(`${BASE_URL}/${route}/${id}/vote/up`);
-        dispatch(upVote(id, route));
+        await dispatch(upVote(id, route));
     }
 }
 
 function downVoteCreator(id, route) {
     return async function (dispatch) {
         await axios.post(`${BASE_URL}/${route}/${id}/vote/down`);
-        dispatch(downVote(id, route));
+        await dispatch(downVote(id, route));
     }
 }
 
 function savePostTitleCreator(title) {
     return async function (dispatch) {
-        dispatch(savePostTitle(title));
+        await dispatch(savePostTitle(title));
     }
 }
 
 function getPostDetails(title) {
     return async function (dispatch) {
         let res = await axios.get(`${BASE_URL}/posts/${title}`);
-        dispatch(gotPostDetails(res.data));
+        await dispatch(gotPostDetails(res.data));
     }
 }
 
