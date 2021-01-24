@@ -32,7 +32,7 @@ function NewPostForm({ blogTitle }) {
         data.user_id = blog.user_id;
         data.blog_id = blog.blog_id;
         data.title = title;
-        dispatch(savePostCreator(data));
+        await dispatch(savePostCreator(data));
         setData(INITIAL_STATE);
         history.push(`/blog/${blogTitle}`);
     }
