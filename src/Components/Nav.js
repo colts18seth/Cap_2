@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { logout } from './actionCreators';
+import { logout } from '../actions/actionCreators';
 import "./Nav.css";
 
 function Nav() {

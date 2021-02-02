@@ -9,7 +9,7 @@ import {
     SAVE_POST_TITLE,
     SAVE_POST,
     GET_POST_DETAILS
-} from './actionTypes';
+} from '../actions/actionTypes';
 
 const INITIAL_STATE = {
     blogs: {},

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from "react-router-dom";
-import { savePostTitleCreator } from './actionCreators';
+import { savePostTitleCreator } from '../actions/actionCreators';
 import './NewBlogForm.css';
 
 function NewPostTitle() {

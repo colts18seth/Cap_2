@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { getAllBlogs } from './actionCreators';
 import { Link } from 'react-router-dom';
+import { getAllBlogs } from '../actions/actionCreators';
 import SearchBar from './SearchBar';
 import './BlogList.css';
 

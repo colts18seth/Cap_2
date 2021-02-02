@@ -1,6 +1,6 @@
-import Header from './Header';
-import Nav from './Nav';
-import Routes from './Routes'
+import Header from './Components/Header';
+import Nav from './Components/Nav';
+import Routes from './Components/Routes'
 import './App.css';
 
 function App() {

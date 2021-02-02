@@ -8,7 +8,7 @@ import NewBlogForm from './NewBlogForm';
 import NewPostForm from './NewPostForm';
 import NewPostTitle from './NewPostTitle';
 import EditPost from './EditPost';
-import { upVoteCreator, downVoteCreator } from './actionCreators';
+import { upVoteCreator, downVoteCreator } from '../actions/actionCreators';
 
 function Routes() {
     const dispatch = useDispatch();

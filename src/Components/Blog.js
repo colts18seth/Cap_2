@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
-import { getBlogDetails } from './actionCreators';
+import { getBlogDetails } from '../actions/actionCreators';
 import './Blog.css'
 
 function Blog({ currentUsername, upVote, downVote }) {

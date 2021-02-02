@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
-import { saveBlogCreator } from './actionCreators';
+import { saveBlogCreator } from '../actions/actionCreators';
 import './NewBlogForm.css';
 
 function NewBlogForm() {

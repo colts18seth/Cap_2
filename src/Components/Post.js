@@ -1,9 +1,9 @@
 import { useParams, useHistory, Link } from 'react-router-dom';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { getPostDetails, deletePost } from './actionCreators';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { getPostDetails, deletePost } from '../actions/actionCreators';
 
 function Post() {
     const { title } = useParams();

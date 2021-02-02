@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import './Login.css';
-import { login, signUp } from "./actionCreators";
+import { login, signUp } from "../actions/actionCreators";
 
 function Login() {
     const dispatch = useDispatch();

@@ -3,7 +3,7 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
-import { savePostCreator } from './actionCreators';
+import { savePostCreator } from '../actions/actionCreators';
 import './NewPostForm.css';
 
 function NewPostForm({ blogTitle }) {
