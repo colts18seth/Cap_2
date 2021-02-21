@@ -68,26 +68,35 @@ function rootReducer(state = INITIAL_STATE, action) {
         case DOWN_VOTE:
             if (action.payload.route === "posts") {
                 const postID = action.payload.id;
-                return {
-                    ...state, posts: {
-                        ...state.posts,
-                        [postID]: {
-                            ...state.posts[postID],
-                            votes: state.posts[postID].votes - 1
+                if (state.posts[postID].votes === 0) {
+                    return { ...state }
+                } else {
+                    return {
+                        ...state, posts: {
+                            ...state.posts,
+                            [postID]: {
+                                ...state.posts[postID],
+                                votes: state.posts[postID].votes - 1
+                            }
                         }
                     }
                 }
             } else {
                 const blogID = action.payload.id;
-                return {
-                    ...state, blogs: {
-                        ...state.blogs,
-                        [blogID]: {
-                            ...state.blogs[blogID],
-                            votes: state.blogs[blogID].votes - 1
+                if (state.blogs[blogID].votes === 0) {
+                    return { ...state }
+                } else {
+                    return {
+                        ...state, blogs: {
+                            ...state.blogs,
+                            [blogID]: {
+                                ...state.blogs[blogID],
+                                votes: state.blogs[blogID].votes - 1
+                            }
                         }
                     }
                 }
+
             }
 
         case SAVE_POST_TITLE:
