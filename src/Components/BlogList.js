@@ -76,7 +76,7 @@ function BlogList({ upVote, downVote }) {
                 blogsArr.map(b => (
                     < div key={b.blog_id} className="col-5 p-0 mb-4 bg-light BlogList" >
                         <div className="container mt-1">
-                            <Link className="text-decoration-none" to={`/blog/${b.title}`}>
+                            <Link className="text-decoration-none" to={`/blog/${b.blog_id}`}>
                                 <h3>{b.title}</h3>
                             </Link>
                             <div className="d-flex flex-row justify-content-end mb-2">

@@ -5,12 +5,12 @@ import { getBlogDetails } from '../actions/actionCreators';
 import './Blog.css'
 
 function Blog({ currentUsername, upVote, downVote }) {
-    const { title } = useParams();
+    const { id } = useParams();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch((getBlogDetails(title)))
-    }, [dispatch, title]);
+        dispatch((getBlogDetails(id)))
+    }, [dispatch, id]);
 
     const blog = useSelector(s => (s.blogDetails.blog));
     const posts = useSelector(s => (s.posts));
@@ -21,7 +21,7 @@ function Blog({ currentUsername, upVote, downVote }) {
             {blog ?
                 <div>
                     <div className="mb-3">
-                        <h1 className="mt-5">{title}</h1>
+                        <h1 className="mt-5">{blog.title}</h1>
                         <small>by: {blog.username}</small>
                     </div>
 

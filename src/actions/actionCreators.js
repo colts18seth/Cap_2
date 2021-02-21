@@ -51,9 +51,9 @@ function saveBlogCreator(data) {
     }
 }
 
-function getBlogDetails(title) {
+function getBlogDetails(id) {
     return async function (dispatch) {
-        let res = await axios.get(`${BASE_URL}/blogs/${title}`);
+        let res = await axios.get(`${BASE_URL}/blogs/${id}`);
         await dispatch(gotBlogDetails(res.data));
     }
 }
