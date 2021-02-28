@@ -18,9 +18,9 @@ function Routes() {
             return s.currentUser.username
         }
     });
-    const blogTitle = useSelector(s => {
+    const blogId = useSelector(s => {
         if (s.blogDetails.blog) {
-            return s.blogDetails.blog.title
+            return s.blogDetails.blog.blog_id
         }
     });
     const author = useSelector(s => {
@@ -52,8 +52,8 @@ function Routes() {
                 </Route>
 
                 <Route exact path='/newPost'>
-                    {blogTitle !== undefined ?
-                        <NewPostForm blogTitle={blogTitle} /> :
+                    {blogId !== undefined ?
+                        <NewPostForm blogId={blogId} /> :
                         <Redirect to='/' />
                     }
                 </Route>
@@ -62,18 +62,18 @@ function Routes() {
                     <NewPostTitle />
                 </Route>
 
-                <Route exact path='/post/:title/edit'>
+                <Route exact path='/post/:id/edit'>
                     {author === currentUsername ?
                         <EditPost /> :
                         <Redirect to='/' />
                     }
                 </Route>
 
-                <Route exact path='/post/:title'>
+                <Route exact path='/post/:id'>
                     <Post />
                 </Route>
 
-                <Route exact path='/blog/:title'>
+                <Route exact path='/blog/:id'>
                     <Blog currentUsername={currentUsername} upVote={upVote} downVote={downVote} />
                 </Route>
 

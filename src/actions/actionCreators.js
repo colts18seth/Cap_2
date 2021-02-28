@@ -51,9 +51,9 @@ function saveBlogCreator(data) {
     }
 }
 
-function getBlogDetails(title) {
+function getBlogDetails(id) {
     return async function (dispatch) {
-        let res = await axios.get(`${BASE_URL}/blogs/${title}`);
+        let res = await axios.get(`${BASE_URL}/blogs/${id}`);
         await dispatch(gotBlogDetails(res.data));
     }
 }
@@ -79,28 +79,28 @@ function downVoteCreator(id, route) {
     }
 }
 
-function savePostTitleCreator(title) {
+function savePostTitleCreator(id) {
     return async function (dispatch) {
-        await dispatch(savePostTitle(title));
+        await dispatch(savePostTitle(id));
     }
 }
 
-function getPostDetails(title) {
+function getPostDetails(id) {
     return async function (dispatch) {
-        let res = await axios.get(`${BASE_URL}/posts/${title}`);
+        let res = await axios.get(`${BASE_URL}/posts/${id}`);
         await dispatch(gotPostDetails(res.data));
     }
 }
 
-function editPost(title, data) {
+function editPost(id, data) {
     return async function () {
-        await axios.patch(`${BASE_URL}/posts/${title}`, data);
+        await axios.patch(`${BASE_URL}/posts/${id}`, data);
     };
 }
 
-function deletePost(title, token) {
+function deletePost(id, token) {
     return async function () {
-        await axios.delete(`${BASE_URL}/posts/${title}`, { data: { _token: token } })
+        await axios.delete(`${BASE_URL}/posts/${id}`, { data: { _token: token } })
     }
 }
 

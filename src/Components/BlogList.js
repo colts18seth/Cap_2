@@ -6,6 +6,9 @@ import SearchBar from './SearchBar';
 import './BlogList.css';
 
 function BlogList({ upVote, downVote }) {
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filterTerm, setFilterTerm] = useState("search");
+
     const dispatch = useDispatch();
     const { blogs } = useSelector(s => ({ blogs: s.blogs }));
     let blogsArr = Object.keys(blogs).map(i => blogs[i]);
@@ -14,9 +17,6 @@ function BlogList({ upVote, downVote }) {
     useEffect(() => {
         dispatch(getAllBlogs())
     }, [dispatch]);
-
-    const [searchTerm, setSearchTerm] = useState("");
-    const [filterTerm, setFilterTerm] = useState("search");
 
     const handleChange = (e) => {
         const { value } = e.target;
@@ -76,7 +76,7 @@ function BlogList({ upVote, downVote }) {
                 blogsArr.map(b => (
                     < div key={b.blog_id} className="col-5 p-0 mb-4 bg-light BlogList" >
                         <div className="container mt-1">
-                            <Link className="text-decoration-none" to={`/blog/${b.title}`}>
+                            <Link className="text-decoration-none" to={`/blog/${b.blog_id}`}>
                                 <h3>{b.title}</h3>
                             </Link>
                             <div className="d-flex flex-row justify-content-end mb-2">

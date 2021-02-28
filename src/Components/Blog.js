@@ -5,12 +5,12 @@ import { getBlogDetails } from '../actions/actionCreators';
 import './Blog.css'
 
 function Blog({ currentUsername, upVote, downVote }) {
-    const { title } = useParams();
+    const { id } = useParams();
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch((getBlogDetails(title)))
-    }, [dispatch, title]);
+        dispatch((getBlogDetails(id)))
+    }, [dispatch, id]);
 
     const blog = useSelector(s => (s.blogDetails.blog));
     const posts = useSelector(s => (s.posts));
@@ -21,7 +21,7 @@ function Blog({ currentUsername, upVote, downVote }) {
             {blog ?
                 <div>
                     <div className="mb-3">
-                        <h1 className="mt-5">{title}</h1>
+                        <h1 className="mt-5">{blog.title}</h1>
                         <small>by: {blog.username}</small>
                     </div>
 
@@ -36,7 +36,7 @@ function Blog({ currentUsername, upVote, downVote }) {
                             postsArr.map(p => (
                                 <div key={p.post_id} className="col-5 p-0 mb-4 border border-dark rounded-pill">
                                     <h4>
-                                        <Link className="text-decoration-none" to={`/post/${p.title}`}>
+                                        <Link className="text-decoration-none" to={`/post/${p.post_id}`}>
                                             {p.title}
                                         </Link>
                                     </h4>

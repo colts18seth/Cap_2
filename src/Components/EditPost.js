@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { getPostDetails, editPost } from '../actions/actionCreators';
 
 function EditPost() {
-    const { title } = useParams();
+    const { id } = useParams();
     const dispatch = useDispatch();
     const post = useSelector(s => (s.post.post));
     const blog = useSelector(s => (s.blogDetails.blog));
@@ -26,17 +26,17 @@ function EditPost() {
     }, [editorData]);
 
     useEffect(() => {
-        dispatch((getPostDetails(title)))
-    }, [dispatch, title]);
+        dispatch((getPostDetails(id)))
+    }, [dispatch, id]);
 
     const handleSubmit = async () => {
         data._token = token;
         data.user_id = blog.user_id;
         data.blog_id = blog.blog_id;
-        data.title = title;
-        dispatch(editPost(title, data));
+        data.title = post.title;
+        dispatch(editPost(id, data));
         setData(post.data);
-        history.push(`/blog/${blog.title}`);
+        history.push(`/blog/${blog.blog_id}`);
     }
 
     return (

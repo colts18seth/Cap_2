@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { getPostDetails, deletePost } from '../actions/actionCreators';
 
 function Post() {
-    const { title } = useParams();
+    const { id } = useParams();
     const dispatch = useDispatch();
     let history = useHistory();
     const blog = useSelector(s => (s.blogDetails.blog));
@@ -17,8 +17,8 @@ function Post() {
     });
 
     useEffect(() => {
-        dispatch((getPostDetails(title)))
-    }, [dispatch, title]);
+        dispatch((getPostDetails(id)))
+    }, [dispatch, id]);
 
     const post = useSelector(s => (s.post.post));
     const currentUser = useSelector(s => {
@@ -29,8 +29,8 @@ function Post() {
     const editor = ClassicEditor;
 
     const handleDelete = async () => {
-        dispatch(deletePost(title, token));
-        history.push(`/blog/${blog.title}`);
+        dispatch(deletePost(id, token));
+        history.push(`/blog/${blog.blog_id}`);
     }
 
     const handleBack = async () => {
@@ -55,7 +55,7 @@ function Post() {
                 <div>
                     {post.username === currentUser &&
                         <div>
-                            <Link className="text-decoration-none" to={`/post/${post.title}/edit`}>
+                            <Link className="text-decoration-none" to={`/post/${post.post_id}/edit`}>
                                 <button className="btn btn-warning mt-3">Edit</button>
                             </Link>
                             <button className="btn btn-danger text-dark mt-3 ms-3" onClick={() => handleDelete()}>Delete</button>
