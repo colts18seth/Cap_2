@@ -62,14 +62,14 @@ function Routes() {
                     <NewPostTitle />
                 </Route>
 
-                <Route exact path='/post/:title/edit'>
+                <Route exact path='/post/:id/edit'>
                     {author === currentUsername ?
                         <EditPost /> :
                         <Redirect to='/' />
                     }
                 </Route>
 
-                <Route exact path='/post/:title'>
+                <Route exact path='/post/:id'>
                     <Post />
                 </Route>
 

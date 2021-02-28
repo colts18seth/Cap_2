@@ -6,6 +6,9 @@ import SearchBar from './SearchBar';
 import './BlogList.css';
 
 function BlogList({ upVote, downVote }) {
+    const [searchTerm, setSearchTerm] = useState("");
+    const [filterTerm, setFilterTerm] = useState("search");
+
     const dispatch = useDispatch();
     const { blogs } = useSelector(s => ({ blogs: s.blogs }));
     let blogsArr = Object.keys(blogs).map(i => blogs[i]);
@@ -14,9 +17,6 @@ function BlogList({ upVote, downVote }) {
     useEffect(() => {
         dispatch(getAllBlogs())
     }, [dispatch]);
-
-    const [searchTerm, setSearchTerm] = useState("");
-    const [filterTerm, setFilterTerm] = useState("search");
 
     const handleChange = (e) => {
         const { value } = e.target;

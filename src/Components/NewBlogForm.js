@@ -14,6 +14,7 @@ function NewBlogForm() {
     const dispatch = useDispatch();
     const token = useSelector(s => (s.currentUser.token));
     const [data, setData] = useState(INITIAL_STATE);
+    const [error, setError] = useState(false);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -24,16 +25,21 @@ function NewBlogForm() {
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        data._token = token;
-        await dispatch(saveBlogCreator(data));
-        setData(INITIAL_STATE);
-        history.push("/");
+        try {
+            e.preventDefault();
+            data._token = token;
+            await dispatch(saveBlogCreator(data));
+            setData(INITIAL_STATE);
+            history.push("/");
+        } catch {
+            setError(true);
+        }
     }
 
     return (
         <form className="blogForm mt-5 w-50 m-auto p-3 bg-light" onSubmit={handleSubmit}>
             <h4>Choose a title for your new blog.</h4>
+            {error && <p className="error">Sorry, you've used this title before.  Please choose another.</p>}
             <div className="pt-3">
                 <label htmlFor="title">Title: </label>
                 <input onChange={handleChange} name="title" id="title" type="text" value={data.title}></input>
