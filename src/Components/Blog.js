@@ -17,7 +17,7 @@ function Blog({ currentUsername, upVote, downVote }) {
     const postsArr = Object.keys(posts).map(i => posts[i]);
 
     return (
-        <div className="Blog">
+        <div className="Blog" data-testId="Blog">
             {blog ?
                 <div>
                     <div className="mb-3">
