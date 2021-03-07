@@ -17,6 +17,12 @@ function Nav() {
             </div>
 
             <div>
+                <Link className="text-decoration-none" to="/blogs">
+                    All Blogs
+                </Link>
+            </div>
+
+            <div>
                 <Link className="text-decoration-none" to="/newBlog">
                     Start a New Blog
                 </Link>

@@ -2,6 +2,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Login from './Login';
 import PostList from './PostList';
+import BlogList from './BlogList';
 import Blog from './Blog';
 import Post from './Post';
 import NewBlogForm from './NewBlogForm';
@@ -75,6 +76,10 @@ function Routes() {
 
                 <Route exact path='/blog/:id'>
                     <Blog currentUsername={currentUsername} upVote={upVote} downVote={downVote} />
+                </Route>
+
+                <Route exact path='/blogs'>
+                    <BlogList upVote={upVote} downVote={downVote} />
                 </Route>
 
                 <Route exact path='/'>

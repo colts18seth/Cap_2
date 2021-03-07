@@ -15,8 +15,9 @@ import {
 
 const INITIAL_STATE = {
     posts: {},
+    blogs: {},
     blogDetails: {},
-    post: {},
+    postDetails: {},
     loggedIn: false,
     currentUser: null
 }
@@ -28,11 +29,11 @@ function rootReducer(state = INITIAL_STATE, action) {
             return { ...state, user: action.payload.user }
 
         case GET_RECENT_POSTS:
-            const postsObj = arrayToObject(action.payload.posts);
+            const postsObj = arrayToObject(action.payload.posts, "posts");
             return { ...state, posts: postsObj }
 
         case GET_ALL_BLOGS:
-            const blogsObj = arrayToObject(action.payload.blogs);
+            const blogsObj = arrayToObject(action.payload.blogs, "blogs");
             return { ...state, blogs: blogsObj }
 
         case LOGIN_USER:
@@ -123,17 +124,24 @@ function rootReducer(state = INITIAL_STATE, action) {
             }
 
         case GET_POST_DETAILS:
-            return { ...state, post: action.payload }
+            return { ...state, postDetails: action.payload }
 
         default:
             return { ...state }
     }
 }
 
-const arrayToObject = (array) =>
+const arrayToObject = (array, type) =>
     array.reduce((obj, item) => {
-        obj[item.blog_id] = item
-        return obj
+        if (type === "posts") {
+            obj[item.post_id] = item
+            return obj
+        } else if (type === "blogs") {
+            obj[item.blog_id] = item
+            return obj
+        } else {
+            return Error("Set type of obj.")
+        }
     }, {})
 
 export default rootReducer;
