@@ -1,12 +1,12 @@
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import Login from './Login';
-import BlogList from './BlogList';
+import PostList from './PostList';
 import Blog from './Blog';
 import Post from './Post';
 import NewBlogForm from './NewBlogForm';
 import NewPostForm from './NewPostForm';
-import NewPostTitle from './NewPostTitle';
+import User from './User';
 import EditPost from './EditPost';
 import { upVoteCreator, downVoteCreator } from '../actions/actionCreators';
 
@@ -58,10 +58,6 @@ function Routes() {
                     }
                 </Route>
 
-                <Route exact path='/postTitle'>
-                    <NewPostTitle />
-                </Route>
-
                 <Route exact path='/post/:id/edit'>
                     {author === currentUsername ?
                         <EditPost /> :
@@ -73,12 +69,16 @@ function Routes() {
                     <Post />
                 </Route>
 
+                <Route exact path='/user/:username'>
+                    <User upVote={upVote} downVote={downVote} />
+                </Route>
+
                 <Route exact path='/blog/:id'>
                     <Blog currentUsername={currentUsername} upVote={upVote} downVote={downVote} />
                 </Route>
 
                 <Route exact path='/'>
-                    <BlogList upVote={upVote} downVote={downVote} />
+                    <PostList upVote={upVote} downVote={downVote} />
                 </Route>
 
                 <Redirect to='/' />

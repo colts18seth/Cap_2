@@ -8,11 +8,13 @@ import {
     DOWN_VOTE,
     SAVE_POST_TITLE,
     SAVE_POST,
-    GET_POST_DETAILS
+    GET_POST_DETAILS,
+    GET_RECENT_POSTS,
+    GET_USER
 } from '../actions/actionTypes';
 
 const INITIAL_STATE = {
-    blogs: {},
+    posts: {},
     blogDetails: {},
     post: {},
     loggedIn: false,
@@ -22,9 +24,16 @@ const INITIAL_STATE = {
 function rootReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
 
+        case GET_USER:
+            return { ...state, user: action.payload.user }
+
+        case GET_RECENT_POSTS:
+            const postsObj = arrayToObject(action.payload.posts);
+            return { ...state, posts: postsObj }
+
         case GET_ALL_BLOGS:
             const blogsObj = arrayToObject(action.payload.blogs);
-            return { ...state, blogs: blogsObj, blogDetails: {}, post: {}, posts: {} }
+            return { ...state, blogs: blogsObj }
 
         case LOGIN_USER:
             return { ...state, loggedIn: true, currentUser: action.payload }

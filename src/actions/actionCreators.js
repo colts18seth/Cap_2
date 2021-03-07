@@ -1,7 +1,28 @@
 import axios from 'axios';
-import { gotAllBlogs, loginUser, logoutUser, signUpUser, saveBlog, gotBlogDetails, savePost, upVote, downVote, savePostTitle, gotPostDetails } from './actions';
+import { gotAllBlogs, loginUser, logoutUser, signUpUser, saveBlog, gotBlogDetails, savePost, upVote, downVote, gotPostDetails, gotRecentPosts, gotUser } from './actions';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
+
+function getRecentPosts(searchOrFilter) {
+    if (searchOrFilter) {
+        if (searchOrFilter.search) {
+            return async function (dispatch) {
+                let res = await axios.get(`${BASE_URL}/posts`, { params: { search: searchOrFilter.search } });
+                await dispatch(gotRecentPosts(res.data));
+            };
+        } else if (searchOrFilter.filter) {
+            return async function (dispatch) {
+                let res = await axios.get(`${BASE_URL}/posts`, { params: { filter: searchOrFilter.filter } });
+                await dispatch(gotRecentPosts(res.data));
+            };
+        }
+    } else {
+        return async function (dispatch) {
+            let res = await axios.get(`${BASE_URL}/posts`);
+            await dispatch(gotRecentPosts(res.data));
+        };
+    }
+}
 
 function getAllBlogs(searchOrFilter) {
     if (searchOrFilter) {
@@ -22,6 +43,13 @@ function getAllBlogs(searchOrFilter) {
             await dispatch(gotAllBlogs(res.data));
         };
     }
+}
+
+function getUser(username) {
+    return async function (dispatch) {
+        let res = await axios.get(`${BASE_URL}/users/${username}`);
+        await dispatch(gotUser(res.data));
+    };
 }
 
 function login(data) {
@@ -79,12 +107,6 @@ function downVoteCreator(id, route) {
     }
 }
 
-function savePostTitleCreator(id) {
-    return async function (dispatch) {
-        await dispatch(savePostTitle(id));
-    }
-}
-
 function getPostDetails(id) {
     return async function (dispatch) {
         let res = await axios.get(`${BASE_URL}/posts/${id}`);
@@ -104,4 +126,4 @@ function deletePost(id, token) {
     }
 }
 
-export { getAllBlogs, login, logout, signUp, saveBlogCreator, getBlogDetails, savePostCreator, upVoteCreator, downVoteCreator, savePostTitleCreator, getPostDetails, editPost, deletePost };
+export { getAllBlogs, login, logout, signUp, saveBlogCreator, getBlogDetails, savePostCreator, upVoteCreator, downVoteCreator, getPostDetails, editPost, deletePost, getRecentPosts, getUser };

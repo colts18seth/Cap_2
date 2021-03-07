@@ -17,7 +17,7 @@ function Blog({ currentUsername, upVote, downVote }) {
     const postsArr = Object.keys(posts).map(i => posts[i]);
 
     return (
-        <div className="Blog" data-testId="Blog">
+        <div className="Blog" data-testid="Blog">
             {blog ?
                 <div>
                     <div className="mb-3">
@@ -26,7 +26,7 @@ function Blog({ currentUsername, upVote, downVote }) {
                     </div>
 
                     {currentUsername === blog.username &&
-                        <Link className="text-decoration-none" to="/postTitle">
+                        <Link className="text-decoration-none" to="/newPost">
                             <button className="btn btn-primary mb-3">New Post</button>
                         </Link>
                     }
