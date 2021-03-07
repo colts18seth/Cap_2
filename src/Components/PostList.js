@@ -12,7 +12,7 @@ function PostList({ upVote, downVote }) {
     const dispatch = useDispatch();
     const posts = useSelector(s => (s.posts));
     let postsArr = Object.keys(posts).map(i => posts[i]);
-    postsArr.sort(function (a, b) { return b.votes - a.votes })
+    postsArr.sort(function (a, b) { return b.post_id - a.post_id })
 
     useEffect(() => {
         dispatch(getRecentPosts())
@@ -28,7 +28,6 @@ function PostList({ upVote, downVote }) {
         if (searchTerm === "") { return }
         let filter = filterTerm;
         dispatch(getRecentPosts({ [filter]: searchTerm }));
-        setFilterTerm("search");
         setSearchTerm("");
     };
 
@@ -50,7 +49,7 @@ function PostList({ upVote, downVote }) {
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                         <path d="M7 11.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z" />
                     </svg>
-                    {filterTerm === "search" ? " UpVotes" :
+                    {filterTerm === "search" ? " Title" :
                         " Author"}
                 </button>
 
@@ -58,11 +57,11 @@ function PostList({ upVote, downVote }) {
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="filterModal">Filter Blogs by:</h5>
+                                <h5 className="modal-title" id="filterModal">Filter Posts by:</h5>
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body d-flex">
-                                <button onClick={() => changeFilter("search")} className="btn btn-dark rounded-3" data-bs-dismiss="modal">Up Votes</button>
+                                <button onClick={() => changeFilter("search")} className="btn btn-dark rounded-3" data-bs-dismiss="modal">Title</button>
                                 <button onClick={() => changeFilter("filter")} className="btn btn-dark rounded-3" data-bs-dismiss="modal">Author</button>
                             </div>
                         </div>

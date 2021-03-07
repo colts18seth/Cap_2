@@ -49,8 +49,8 @@ function NewPostForm({ blogId }) {
         <>
             <div className="mt-5">
                 {error &&
-                    <h4 className="text-danger">This title has already been used.</h4>}
-                <input onChange={handleChange} placeholder="Title" name="title" />
+                    <h4 className="text-danger">A unique title is required.</h4>}
+                <input className="w-50 mb-3" onChange={handleChange} placeholder="Please add a title for the post here" name="title" />
                 <CKEditor
                     editor={editor}
                     onChange={(event, editor) => {

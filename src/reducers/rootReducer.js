@@ -26,7 +26,10 @@ function rootReducer(state = INITIAL_STATE, action) {
     switch (action.type) {
 
         case GET_USER:
-            return { ...state, user: action.payload.user }
+            let user = action.payload.user;
+            let userPosts = arrayToObject(action.payload.user.posts, "posts");
+            let userBlogs = arrayToObject(action.payload.user.blogs, "blogs");
+            return { ...state, user: user, blogs: userBlogs, posts: userPosts }
 
         case GET_RECENT_POSTS:
             const postsObj = arrayToObject(action.payload.posts, "posts");

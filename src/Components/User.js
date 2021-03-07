@@ -8,19 +8,27 @@ function User({ upVote, downVote }) {
     const { username } = useParams();
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch((getUser(username)))
-    }, [dispatch, username]);
-
     const user = useSelector(s => {
         if (s.user) return s.user.user
     });
-    const posts = useSelector(s => {
-        if (s.user) return s.user.posts
+
+    let posts = useSelector(s => {
+        if (s.user) return s.posts
     });
-    const blogs = useSelector(s => {
-        if (s.user) return s.user.blogs
+    if (posts) {
+        posts = Object.keys(posts).map(i => posts[i]);
+    }
+
+    let blogs = useSelector(s => {
+        if (s.user) return s.blogs
     });
+    if (blogs) {
+        blogs = Object.keys(blogs).map(i => blogs[i]);
+    }
+
+    useEffect(() => {
+        dispatch(getUser(username))
+    }, [dispatch, username]);
 
     return (
         <div>

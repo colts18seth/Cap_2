@@ -12,7 +12,7 @@ function BlogList({ upVote, downVote }) {
     const dispatch = useDispatch();
     const blogs = useSelector(s => (s.blogs));
     let blogsArr = Object.keys(blogs).map(i => blogs[i]);
-    blogsArr.sort(function (a, b) { return b.votes - a.votes })
+    // blogsArr.sort(function (a, b) { return b.votes - a.votes })
 
     useEffect(() => {
         dispatch(getAllBlogs())
@@ -50,7 +50,7 @@ function BlogList({ upVote, downVote }) {
                         <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                         <path d="M7 11.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z" />
                     </svg>
-                    {filterTerm === "search" ? " UpVotes" :
+                    {filterTerm === "search" ? " Title" :
                         " Author"}
                 </button>
 
@@ -62,7 +62,7 @@ function BlogList({ upVote, downVote }) {
                                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div className="modal-body d-flex">
-                                <button onClick={() => changeFilter("search")} className="btn btn-dark rounded-3" data-bs-dismiss="modal">Up Votes</button>
+                                <button onClick={() => changeFilter("search")} className="btn btn-dark rounded-3" data-bs-dismiss="modal">Title</button>
                                 <button onClick={() => changeFilter("filter")} className="btn btn-dark rounded-3" data-bs-dismiss="modal">Author</button>
                             </div>
                         </div>

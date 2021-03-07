@@ -24,16 +24,9 @@ function Routes() {
             return s.blogDetails.blog.blog_id
         }
     });
-    const author = useSelector(s => {
-        if (s.blogDetails.blog) {
-            return s.blogDetails.blog.username
-        }
-    });
-
     const upVote = (id, route) => {
         dispatch(upVoteCreator(id, route))
     }
-
     const downVote = (id, route) => {
         dispatch(downVoteCreator(id, route))
     }
@@ -60,10 +53,7 @@ function Routes() {
                 </Route>
 
                 <Route exact path='/post/:id/edit'>
-                    {author === currentUsername ?
-                        <EditPost /> :
-                        <Redirect to='/' />
-                    }
+                    <EditPost />
                 </Route>
 
                 <Route exact path='/post/:id'>
