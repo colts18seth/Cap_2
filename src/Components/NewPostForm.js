@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import { savePostCreator } from '../actions/actionCreators';
 import './NewPostForm.css';
 
-function NewPostForm({ blogTitle }) {
+function NewPostForm({ blogId }) {
     const INITIAL_STATE = {
         data: "",
         _token: ""
@@ -14,12 +14,13 @@ function NewPostForm({ blogTitle }) {
 
     const token = useSelector(s => (s.currentUser.token));
     const blog = useSelector(s => (s.blogDetails.blog));
-    const title = useSelector(s => (s.post.title));
     const dispatch = useDispatch();
     let history = useHistory();
 
     const [editorData, setEditorData] = useState("");
     const [data, setData] = useState(INITIAL_STATE);
+    const [title, setTitle] = useState("");
+    const [error, setError] = useState(false);
 
     const editor = ClassicEditor;
 
@@ -27,11 +28,19 @@ function NewPostForm({ blogTitle }) {
         setData({ data: editorData })
     }, [editorData]);
 
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setTitle(data => ({
+            ...data,
+            [name]: value
+        }));
+    }
+
     const handleSubmit = async () => {
         data._token = token;
         data.user_id = blog.user_id;
         data.blog_id = blog.blog_id;
-        data.title = title;
+        data.title = title.title;
         await dispatch(savePostCreator(data));
         setData(INITIAL_STATE);
     }
@@ -39,6 +48,9 @@ function NewPostForm({ blogTitle }) {
     return (
         <>
             <div className="mt-5">
+                {error &&
+                    <h4 className="text-danger">A unique title is required.</h4>}
+                <input className="w-50 mb-3" onChange={handleChange} placeholder="Please add a title for the post here" name="title" />
                 <CKEditor
                     editor={editor}
                     onChange={(event, editor) => {
@@ -49,8 +61,13 @@ function NewPostForm({ blogTitle }) {
 
             </div>
             <button className="btn btn-success mt-3" onClick={async () => {
-                await handleSubmit();
-                history.push(`/blog/${blogTitle}`);
+                try {
+                    await handleSubmit();
+                    history.push(`/blog/${blogId}`);
+                }
+                catch {
+                    setError(true);
+                }
             }}>Save</button>
         </>
     );

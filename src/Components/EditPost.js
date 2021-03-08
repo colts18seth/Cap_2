@@ -8,7 +8,7 @@ import { getPostDetails, editPost } from '../actions/actionCreators';
 function EditPost() {
     const { id } = useParams();
     const dispatch = useDispatch();
-    const post = useSelector(s => (s.post.post));
+    const post = useSelector(s => (s.postDetails.post));
     const blog = useSelector(s => (s.blogDetails.blog));
     const token = useSelector(s => {
         if (s.currentUser) {

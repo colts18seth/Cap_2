@@ -9,14 +9,30 @@ import {
     UP_VOTE,
     DOWN_VOTE,
     SAVE_POST_TITLE,
-    GET_POST_DETAILS
+    GET_POST_DETAILS,
+    GET_RECENT_POSTS,
+    GET_USER
 } from './actionTypes';
+
+function gotRecentPosts(posts) {
+    return ({
+        type: GET_RECENT_POSTS,
+        payload: posts
+    });
+}
 
 function gotAllBlogs(blogs) {
     return ({
         type: GET_ALL_BLOGS,
         payload: blogs
     });
+}
+
+function gotUser(userDetails) {
+    return ({
+        type: GET_USER,
+        payload: userDetails
+    })
 }
 
 function loginUser(data) {
@@ -88,4 +104,4 @@ function gotPostDetails(data) {
     });
 }
 
-export { gotAllBlogs, loginUser, logoutUser, signUpUser, saveBlog, gotBlogDetails, savePost, upVote, downVote, savePostTitle, gotPostDetails };
+export { gotAllBlogs, loginUser, logoutUser, signUpUser, saveBlog, gotBlogDetails, savePost, upVote, downVote, savePostTitle, gotPostDetails, gotRecentPosts, gotUser };

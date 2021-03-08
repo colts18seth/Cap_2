@@ -20,7 +20,7 @@ function Post() {
         dispatch((getPostDetails(id)))
     }, [dispatch, id]);
 
-    const post = useSelector(s => (s.post.post));
+    const post = useSelector(s => (s.postDetails.post));
     const currentUser = useSelector(s => {
         if (s.currentUser) {
             return s.currentUser.username

@@ -9,3 +9,5 @@ export const UP_VOTE = "UP_VOTE";
 export const DOWN_VOTE = "DOWN_VOTE";
 export const SAVE_POST_TITLE = "SAVE_POST_TITLE";
 export const GET_POST_DETAILS = "GET_POST_DETAILS";
+export const GET_RECENT_POSTS = "GET_RECENT_POSTS";
+export const GET_USER = "GET_USER";

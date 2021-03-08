@@ -30,7 +30,7 @@ function NewBlogForm() {
             data._token = token;
             await dispatch(saveBlogCreator(data));
             setData(INITIAL_STATE);
-            history.push("/");
+            history.push("/blogs");
         } catch {
             setError(true);
         }

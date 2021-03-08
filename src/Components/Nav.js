@@ -12,6 +12,12 @@ function Nav() {
 
             <div className="ps-3">
                 <Link className="text-decoration-none" to="/">
+                    Recent Posts
+                </Link>
+            </div>
+
+            <div>
+                <Link className="text-decoration-none" to="/blogs">
                     All Blogs
                 </Link>
             </div>
@@ -32,7 +38,6 @@ function Nav() {
                     </Link>
                 }
             </div>
-
         </nav>
     );
 }

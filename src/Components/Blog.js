@@ -26,7 +26,7 @@ function Blog({ currentUsername, upVote, downVote }) {
                     </div>
 
                     {currentUsername === blog.username &&
-                        <Link className="text-decoration-none" to="/postTitle">
+                        <Link className="text-decoration-none" to="/newPost">
                             <button className="btn btn-primary mb-3">New Post</button>
                         </Link>
                     }
