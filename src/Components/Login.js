@@ -65,7 +65,7 @@ function Login() {
 
     return (
         <>
-            <div className='buttons'>
+            <div data-testid="loginForm" className='buttons'>
                 <button id='loginButton' className='loginButton active' type='button' onClick={handleActiveForm}>Login</button>
                 <button id='signUpButton' className='signUpButton' type='button' onClick={handleActiveForm}>Sign-Up</button>
             </div>

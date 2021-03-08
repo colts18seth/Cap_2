@@ -47,7 +47,7 @@ function NewPostForm({ blogId }) {
 
     return (
         <>
-            <div className="mt-5">
+            <div data-testid="newPostForm" className="mt-5">
                 {error &&
                     <h4 className="text-danger">A unique title is required.</h4>}
                 <input className="w-50 mb-3" onChange={handleChange} placeholder="Please add a title for the post here" name="title" />

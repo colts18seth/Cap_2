@@ -9,7 +9,6 @@
 		"@testing-library/react": "^11.2.2",
 		"@testing-library/user-event": "^12.6.0",
 		"axios": "^0.21.1",
-		"cypress": "^6.6.0",
 		"eslint-plugin-chai-friendly": "^0.6.0",
 		"eslint-plugin-cypress": "^2.11.2",
 		"react": "^17.0.1",
@@ -48,5 +47,8 @@
 	},
 	"engines": {
 		"node": "12.x"
+	},
+	"devDependencies": {
+		"cypress": "^6.6.0"
 	}
 }

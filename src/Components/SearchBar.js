@@ -3,7 +3,7 @@ import './SearchBar.css';
 function searchBar({ handleChange, handleSubmit, searchTerm, toggleSearch }) {
 
     return (
-        <form className='SearchBar' onSubmit={handleSubmit}>
+        <form data-testid="searchBar" className='SearchBar' onSubmit={handleSubmit}>
             <input
                 className="rounded-3 fs-5"
                 onChange={handleChange}

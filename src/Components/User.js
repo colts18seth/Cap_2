@@ -31,7 +31,7 @@ function User({ upVote, downVote }) {
     }, [dispatch, username]);
 
     return (
-        <div>
+        <div data-testid="userProfile">
             {user &&
                 <div className="profile mt-3 py-2 bg-light w-50 rounded">
                     <h3>User Profile</h3>

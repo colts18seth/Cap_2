@@ -39,7 +39,7 @@ function Post() {
 
     return (
         <>
-            <div className="d-flex flex-row justify-content-start">
+            <div data-testid="post" className="d-flex flex-row justify-content-start">
                 <button className="btn btn-dark m-0 mt-3 mb-3 rounded-3" onClick={() => handleBack()}>{`< Back`}</button>
             </div>
             <div>

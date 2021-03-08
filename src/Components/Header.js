@@ -3,7 +3,7 @@ import "./Header.css";
 function Header() {
 
     return (
-        <div className="Header text-center text-dark bg-light pb-3">
+        <div data-testid="Header" className="Header text-center text-dark bg-light pb-3">
             Key_Blogger
         </div>
     );

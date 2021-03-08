@@ -8,27 +8,27 @@ function Nav() {
     const dispatch = useDispatch();
 
     return (
-        <nav className="bg-light text-dark d-flex justify-content-between align-items-center mt-3">
+        <nav data-testid="nav" className="bg-light text-dark d-flex justify-content-between align-items-center mt-3">
 
-            <div className="ps-3">
+            <div data-testid="recentPostsLink" className="ps-3">
                 <Link className="text-decoration-none" to="/">
                     Recent Posts
                 </Link>
             </div>
 
-            <div>
+            <div data-testid="allBlogsLink">
                 <Link className="text-decoration-none" to="/blogs">
                     All Blogs
                 </Link>
             </div>
 
-            <div>
+            <div data-testid="startNewBlogLink">
                 <Link className="text-decoration-none" to="/newBlog">
                     Start a New Blog
                 </Link>
             </div>
 
-            <div className="pe-3">
+            <div data-testid="loginLogoutLink" className="pe-3">
                 {!loggedIn ?
                     <Link className="text-end text-decoration-none" to="/login">
                         Login

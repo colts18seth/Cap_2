@@ -37,7 +37,7 @@ function NewBlogForm() {
     }
 
     return (
-        <form className="blogForm mt-5 w-50 m-auto p-3 bg-light" onSubmit={handleSubmit}>
+        <form data-testid="newBlogForm" className="blogForm mt-5 w-50 m-auto p-3 bg-light" onSubmit={handleSubmit}>
             <h4>Choose a title for your new blog.</h4>
             {error && <p className="error">Sorry, you've used this title before.  Please choose another.</p>}
             <div className="pt-3">

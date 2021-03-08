@@ -40,7 +40,7 @@ function PostList({ upVote, downVote }) {
     }
 
     return (
-        <div className="row justify-content-around my-5" data-testid="PostList">
+        <div className="row justify-content-around my-5" data-testid="postList">
             <div className="mb-4 d-flex justify-content-center">
 
                 <button type="button" className="btn btn-light p-0 m-0 filterButton" data-bs-toggle="modal" data-bs-target="#filter">

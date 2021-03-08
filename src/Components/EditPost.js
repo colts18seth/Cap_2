@@ -40,7 +40,7 @@ function EditPost() {
     }
 
     return (
-        <div className="mt-5">
+        <div className="mt-5" data-testid="editor">
             {post ?
                 <>
                     <CKEditor
@@ -51,7 +51,7 @@ function EditPost() {
                             setEditorData(data);
                         }}
                     />
-                    <button className="btn btn-success mt-3" onClick={() => handleSubmit()}>Save</button>
+                    <button data-testid="saveButton" className="btn btn-success mt-3" onClick={() => handleSubmit()}>Save</button>
                 </> :
                 "Loading..."}
         </div>
