@@ -18,7 +18,7 @@ describe("Check that user must authenticate to make new blog.", () => {
         cy.get('#username').type("test");
         cy.get('#password').type("password");
         cy.get('.justify-content-center').click();
-        cy.get('[data-testid=startNewBlogLink]').click();
+        cy.get('[data-testid=startNewBlogLink]').click().click();
         cy.get('[data-testid=newBlogForm]').should('exist');
     })
 })
