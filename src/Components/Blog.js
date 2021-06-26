@@ -35,8 +35,8 @@ function Blog({ currentUsername, upVote, downVote }) {
                         {postsArr.length > 0 ?
                             postsArr.map(p => (
                                 <div key={p.post_id} className="col-5 p-0 mb-4 border border-dark rounded-pill">
-                                    <h4 data-testid="postTitleLink">
-                                        <Link className="text-decoration-none" to={`/post/${p.post_id}`}>
+                                    <h4>
+                                        <Link data-testid="postTitleLink" className="text-decoration-none" to={`/post/${p.post_id}`}>
                                             {p.title}
                                         </Link>
                                     </h4>

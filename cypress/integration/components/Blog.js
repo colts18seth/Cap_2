@@ -8,4 +8,11 @@ describe("Make sure Blog loads", () => {
         cy.visit('/blog/1');
         cy.get('[data-testid=Blog]').should('contain', 'by:');
     })
+
+    it('opens when blog title is clicked', () => {
+        cy.visit('/');
+        cy.get('[data-testid=allBlogsLink]').click();
+        cy.get(':nth-child(2) > .container > .text-decoration-none > [data-testid=blogTitle]').click();
+        cy.get('[data-testid=Blog]').should('exist');
+    })
 })
